@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "917094460514",
+    "firebase_url": "https://tes-ff205.firebaseio.com",
+    "project_id": "tes-ff205",
+    "storage_bucket": "tes-ff205.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:917094460514:android:464de9b3362f18df",
+        "android_client_info": {
+          "package_name": "com.blah"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "917094460514-h1i2kv6fgunh7mcdr7qjn4k9n9gnvbsq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAREr3ouNpiFr-TaF8GLelSsgd6sYxL0Sk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
