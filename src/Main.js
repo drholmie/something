@@ -46,7 +46,7 @@ export default class Main extends React.Component {
           });
       }
       else {
-        self.props.navigation.navigate('Auth'); s
+        self.props.navigation.navigate('Auth');
       }
     });
   }
@@ -55,7 +55,6 @@ export default class Main extends React.Component {
     if (this.state.loading)
       return <Loading />;
     else {
-      console.log(this.state.meals);
       var user = this.state.user;
       var meals = this.state.meals;
       return (
@@ -71,6 +70,19 @@ export default class Main extends React.Component {
             }
             title="Show QR Code"
           />
+          <Button
+            onPress={
+              () => {
+                // Alert.alert("Sign Out");
+                firebase.auth().signOut().then(function() {
+                Alert.alert("Successfully signed out.");
+                }).catch(function(error) {
+                Alert.alert("Error occurred, please try after a while.");
+                });
+              }
+            }
+              title="Sign Out"
+            />
           <Text>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text>
           <Text>Lunch: {meals.lunch ? "Yes" : "No"}</Text>
           <Text>MNS: {meals.mns ? "Yes" : "No"}</Text>

@@ -13,7 +13,7 @@ const AppStack = createStackNavigator({
   Main: {
     screen: Main,
     navigationOptions: {
-      header: null
+      title: "#code 2k18"
     }
   },
   ShowQR: {
