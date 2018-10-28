@@ -2,6 +2,7 @@ import React from 'react'
 import { StyleSheet, Alert, Button, Text, View } from 'react-native'
 import firebase from 'react-native-firebase'
 import Loading from './Loading';
+import DataDisplay from './dataDisplay'
 
 
 export default class Main extends React.Component {
@@ -74,18 +75,20 @@ export default class Main extends React.Component {
             onPress={
               () => {
                 // Alert.alert("Sign Out");
-                firebase.auth().signOut().then(function() {
-                Alert.alert("Successfully signed out.");
-                }).catch(function(error) {
-                Alert.alert("Error occurred, please try after a while.");
+                firebase.auth().signOut().then(function () {
+                  Alert.alert("Successfully signed out.");
+                }).catch(function (error) {
+                  Alert.alert("Error occurred, please try after a while.");
                 });
               }
             }
-              title="Sign Out"
-            />
-          <Text>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text>
+            title="Sign Out"
+          />
+          <Text>{'\n'}</Text>
+          {/* <Text>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text>
           <Text>Lunch: {meals.lunch ? "Yes" : "No"}</Text>
-          <Text>MNS: {meals.mns ? "Yes" : "No"}</Text>
+          <Text>MNS: {meals.mns ? "Yes" : "No"}</Text> */}
+          <DataDisplay meals={meals} />
         </View>
       )
     }
