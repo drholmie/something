@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
-import SingleMeals from './singleMeal';
+import { Platform, StyleSheet, Text, View, Button } from 'react-native';
 
-export default class dataDisplay extends Component {
+
+
+export default class singleMeals extends Component {
     constructor(props) {
         super(props);
-        // this.state = { meals : false };
+        // this.state = { someField: false };
     }
 
     componentWillMount() {
@@ -19,15 +20,10 @@ export default class dataDisplay extends Component {
 
     render() {
         // Return a view of what to render
-        var meals = this.props.meals;
+        var singlemeal = this.props.singlemeal;
         return(
             <View style={styles.container}>
-                <Text style = {styles.textstyles}>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text>
-                <SingleMeals s1 = {this.state.meals.breakfast}/>   
-                <Text style = {styles.textstyles}>Lunch: {meals.lunch ? "Yes" : "No"}</Text>
-                <SingleMeals s1 = {this.state.meals.lunch}/>
-                <Text style = {styles.textstyles}>MNS: {meals.mns ? "Yes" : "No"}</Text>
-                <SingleMeals s1 = {this.state.meals.mns}/>
+                
             </View>
         );
     }

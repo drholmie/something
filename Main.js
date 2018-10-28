@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Alert, Button, Text, View } from 'react-native'
 import firebase from 'react-native-firebase'
 import Loading from './Loading';
-import dataDisplay from './dataDisplay';
+import DataDisplay from './dataDisplay';
 
 
 export default class Main extends React.Component {
@@ -64,7 +64,7 @@ export default class Main extends React.Component {
   }
 
   render() {
-    <dataDisplay data = {this.state.meals}/>
+    
     if (this.state.loading)
       return <Loading />;
     else {
@@ -97,7 +97,9 @@ export default class Main extends React.Component {
             }
               title="Sign Out here"
             />
-            <Text>{dataDisplay.data}</Text>
+            <Text style = {styles.spacing}></Text>
+            <DataDisplay meals= {this.state.meals}/>
+            
         </View>
       )
     }
