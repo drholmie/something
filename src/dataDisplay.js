@@ -22,7 +22,7 @@ export default class dataDisplay extends Component {
         var meals = this.props.meals;
         var other = (this.props.other) ? this.props.other : new Object();
         return (
-            <View>
+            <View style={styles.container}>
                 <SingleMeal mealName="Breakfast" mealValue={meals.breakfast} />
                 <SingleMeal mealName="Lunch Day 1" mealValue={meals.lunchDay1} />
                 <SingleMeal mealName="Snacks" mealValue={meals.snacks} />
@@ -35,6 +35,7 @@ export default class dataDisplay extends Component {
 
 const styles = StyleSheet.create({
     container: {
+        // backgroundColor: "blue",
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center'

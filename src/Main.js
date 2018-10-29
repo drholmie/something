@@ -67,10 +67,15 @@ export default class Main extends React.Component {
       var other = this.state.other;
       return (
         <View style={styles.container}>
-          <Text>
+        <View style={styles.Smallcontainer}>
+        <View style = {styles.buttonstyles}>
+          <Text style = {styles.textstyles}>
             Hi {user.email}!
           </Text>
+          </View>
+          <View style = {styles.buttonstyles}>
           <Button
+            color="#cd5c5c"
             onPress={
               () => {
                 this.props.navigation.navigate('ShowQR');
@@ -78,7 +83,10 @@ export default class Main extends React.Component {
             }
             title="Show QR Code"
           />
+          </View>
+          <View>
           <Button
+            color="#cd5c5c"
             onPress={
               () => {
                 // Alert.alert("Sign Out");
@@ -91,8 +99,15 @@ export default class Main extends React.Component {
             }
             title="Sign Out"
           />
-          <Text>{'\n'}</Text>
-          <DataDisplay meals={meals} other={other} />
+          </View>
+          <Text style = {styles.textstyles}>{'\n'}</Text>
+          {/* <Text>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text>
+          <Text>Lunch: {meals.lunch ? "Yes" : "No"}</Text>
+          <Text>MNS: {meals.mns ? "Yes" : "No"}</Text> */}
+          </View>
+          <View style={styles.Smallcontainer}>
+            <DataDisplay meals={meals} other={other} />
+          </View>
         </View>
       )
     }
@@ -102,7 +117,20 @@ export default class Main extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    // justifyContent: 'center',
+    // alignItems: 'center'
+  },
+  Smallcontainer: {
+    flex: 2,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  textstyles: {
+    color: 'black',
+    fontSize: 30,
+    fontFamily: 'sans-serif-thin',
+  },
+  buttonstyles: {
+    marginVertical: 8
   }
 })
