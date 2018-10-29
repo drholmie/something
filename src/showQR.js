@@ -30,9 +30,9 @@ export default class bleh extends Component {
         else
             return (
                 <View style={styles.container}>
-                <Text>
+                {/* <Text>
                     Hi {user.email}!
-                </Text>
+                </Text> */}
                 <QRgenerate message={user.uid} />
                 </View>
             );

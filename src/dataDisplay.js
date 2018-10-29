@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View } from 'react-native';
+import { Platform, StyleSheet, Text, View, ScrollView } from 'react-native';
 import SingleMeal from './singleMeal';
 import SingleItem from './singleItem';
 
@@ -22,13 +22,13 @@ export default class dataDisplay extends Component {
         var meals = this.props.meals;
         var other = (this.props.other) ? this.props.other : new Object();
         return (
-            <View style={styles.container}>
+            <ScrollView contentContainerStyle={styles.container}>
                 <SingleMeal mealName="Breakfast" mealValue={meals.breakfast} />
-                <SingleMeal mealName="Lunch Day 1" mealValue={meals.lunchDay1} />
+                <SingleMeal mealName="Lunch" mealValue={meals.lunchDay1} />
                 <SingleMeal mealName="Snacks" mealValue={meals.snacks} />
                 <SingleMeal mealName="Mid-night snacks" mealValue={meals.mns} />
                 <SingleItem itemName="Ethernet Cables" qty={other.ethernetCables} />
-            </View>
+            </ScrollView>
         );
     }
 }
@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
     container: {
         // backgroundColor: "blue",
         flex: 1,
-        justifyContent: 'center',
         alignItems: 'center'
     },
     textstyles: {

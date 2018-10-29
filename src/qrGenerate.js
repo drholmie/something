@@ -12,7 +12,7 @@ export default class QRgenerate extends Component{
                 <QRCode
                     value= {this.props.message}
                     size={200}
-                    bgColor='purple'
+                    bgColor='#ff0000'
                     fgColor='white' />
             </View>
         );
