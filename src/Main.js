@@ -8,7 +8,7 @@ import DataDisplay from './dataDisplay'
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { user: false, loading: true, meals: null };
+    this.state = { user: false, loading: true, meals: null, other: null };
   }
 
   componentDidMount() {
@@ -27,9 +27,15 @@ export default class Main extends React.Component {
             if (!doc.data()) {
               db.collection("participants").doc(user.uid).set({
                 meals: {
-                  lunch: false,
-                  dinner: false,
-                  mns: false
+                  breakfast: false,
+                  lunchDay1: false,
+                  lunchDay2: false,
+                  mns: false,
+                  snacks: false,
+                  dinner: false
+                },
+                other: {
+                  ethernetCables: 0
                 }
               })
                 .then(function () {
@@ -40,7 +46,7 @@ export default class Main extends React.Component {
                 });
             }
             else {
-              self.setState({ meals: doc.data().meals, loading: false });
+              self.setState({ meals: doc.data().meals, other: doc.data().other, loading: false });
             }
           }, function (error) {
             console.log(error);
@@ -58,6 +64,7 @@ export default class Main extends React.Component {
     else {
       var user = this.state.user;
       var meals = this.state.meals;
+      var other = this.state.other;
       return (
         <View style={styles.container}>
           <Text>
@@ -85,10 +92,7 @@ export default class Main extends React.Component {
             title="Sign Out"
           />
           <Text>{'\n'}</Text>
-          {/* <Text>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text>
-          <Text>Lunch: {meals.lunch ? "Yes" : "No"}</Text>
-          <Text>MNS: {meals.mns ? "Yes" : "No"}</Text> */}
-          <DataDisplay meals={meals} />
+          <DataDisplay meals={meals} other={other} />
         </View>
       )
     }

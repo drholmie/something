@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import SingleMeal from './singleMeal';
+import SingleItem from './singleItem';
 
 export default class dataDisplay extends Component {
     constructor(props) {
@@ -19,14 +20,14 @@ export default class dataDisplay extends Component {
     render() {
         // Return a view of what to render
         var meals = this.props.meals;
+        var other = (this.props.other) ? this.props.other : new Object();
         return (
             <View>
                 <SingleMeal mealName="Breakfast" mealValue={meals.breakfast} />
-                <SingleMeal mealName="Lunch" mealValue={meals.lunch} />
+                <SingleMeal mealName="Lunch Day 1" mealValue={meals.lunchDay1} />
+                <SingleMeal mealName="Snacks" mealValue={meals.snacks} />
                 <SingleMeal mealName="Mid-night snacks" mealValue={meals.mns} />
-                {/* <Text style = {styles.textstyles}>Breakfast: {meals.breakfast ? "Yes" : "No"}</Text> */}
-                {/* <Text style = {styles.textstyles}>Lunch: {meals.lunch ? "Yes" : "No"}</Text>
-                <Text style = {styles.textstyles}>MNS: {meals.mns ? "Yes" : "No"}</Text> */}
+                <SingleItem itemName="Ethernet Cables" qty={other.ethernetCables} />
             </View>
         );
     }
