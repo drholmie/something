@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/register"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Registrations" />
+        <item
+            android:id="@+id/food"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Food" />
+        <item
+            android:id="@+id/cables"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Cables" />
+
+    </group>
+
+    <item android:title="Judging">
+        <menu>
+            <item
+                android:id="@+id/judge"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Judgement Sheet" />
+
+        </menu>
+    </item>
+
+</menu>
