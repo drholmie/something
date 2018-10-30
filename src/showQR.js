@@ -12,7 +12,6 @@ export default class bleh extends Component {
     }
 
     componentDidMount() {
-        console.log("IN QR\n\n\n\n....");
         var self = this;
         firebase.auth().onAuthStateChanged(function (user) {
             if (user) {
@@ -30,10 +29,7 @@ export default class bleh extends Component {
         else
             return (
                 <View style={styles.container}>
-                {/* <Text>
-                    Hi {user.email}!
-                </Text> */}
-                <QRgenerate message={user.uid} />
+                    <QRgenerate message={user.uid} />
                 </View>
             );
     }
