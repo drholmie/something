@@ -6,15 +6,21 @@
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
+    android:background="@android:color/black"
     tools:showIn="@layout/app_bar_main">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/hackprod"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Begin by opening the drawer!"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:padding="30dp"
+        android:textColor="@android:color/holo_purple"
+        android:fontFamily="sans-serif-condensed"/>
 
 </android.support.constraint.ConstraintLayout>

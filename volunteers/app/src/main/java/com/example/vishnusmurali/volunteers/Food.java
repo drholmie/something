@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.firestore.DocumentReference;
@@ -25,6 +26,7 @@ import com.google.zxing.integration.android.IntentResult;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,12 +41,12 @@ public class Food extends AppCompatActivity implements View.OnClickListener {
     String rresult;
     String req;
     int c = 0;
-    CardView breakfast;
-    CardView lunch;
-    CardView dinner;
-    CardView mns;
-    CardView snacks;
-    CardView lunch1;
+    TextView breakfast;
+    TextView lunch;
+    TextView dinner;
+    TextView mns;
+    TextView snacks;
+    TextView lunch1;
     int SCAN_BARCODE = 1021;
     int n;
     @Override
@@ -54,12 +56,12 @@ public class Food extends AppCompatActivity implements View.OnClickListener {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // but=(Button)findViewById(R.id.but);
-        breakfast = (CardView) findViewById(R.id.breakfast);
-        lunch = (CardView) findViewById(R.id.lunch);
-        snacks = (CardView) findViewById(R.id.snacks);
-        dinner = (CardView) findViewById(R.id.dinner);
-        mns = (CardView) findViewById(R.id.mns);
-        lunch1=(CardView) findViewById(R.id.lunch2);
+        breakfast = (TextView) findViewById(R.id.breakfast);
+        lunch = (TextView) findViewById(R.id.lunch);
+        snacks = (TextView) findViewById(R.id.snacks);
+        dinner = (TextView) findViewById(R.id.dinner);
+        mns = (TextView) findViewById(R.id.mns);
+        lunch1=(TextView) findViewById(R.id.lunch2);
         breakfast.setOnClickListener(this);
         lunch.setOnClickListener(this);
         snacks.setOnClickListener(this);
