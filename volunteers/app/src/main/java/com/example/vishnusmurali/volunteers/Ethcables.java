@@ -34,7 +34,7 @@ public class Ethcables extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ethcables);
         textView=(TextView)findViewById(R.id.tv);
-        editText=(EditText)findViewById(R.id.ed);
+      //  editText=(EditText)findViewById(R.id.ed);
         db = FirebaseFirestore.getInstance();
         rresult=getIntent().getStringExtra("rresult");
         req=getIntent().getStringExtra("req");
@@ -64,28 +64,40 @@ public void load(final String rresult) {
                     return;
                 }
                 Map<String, Object> eth = new HashMap<String, Object>();
+                Map<String, Object> details = new HashMap<String, Object>();
                 if (snapshot != null && snapshot.exists()) {
                     Log.d("", "Current data: " + snapshot.getData());
-                    snapshot.getId();
 
+                    details=(HashMap<String, Object>) snapshot.get("details");
                     eth = (HashMap<String, Object>) snapshot.get("other");
-                   // String time = String.valueOf(System.currentTimeMillis());
-                    if(String.valueOf(eth.get("ethernetCables")).equals("")) {
-                        textView.setText(String.valueOf(eth.get("ethernetCables")));
-                        String l = editText.getText().toString();
-                        Map<String, Object> user = new HashMap<>();
-                        //String r=String.valueOf(eth.get(req));
-                        //  if (r.equals("false")) {
-                        Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
-                        eth.put("ethernetCables", l);
-                        user.put("other", eth);
-                        db.collection("participants")
-                                .document(rresult)
-                                .update(user);
-                        return;
+                    if(!String.valueOf(details.get("teamid")).equals("")) {
+
+                         String time = String.valueOf(System.currentTimeMillis());
+                        if (String.valueOf(eth.get("ethernetCables")).equals("false")) {
+                            textView.setText(String.valueOf(eth.get("ethernetCables")));
+                         //   String l = editText.getText().toString();
+                            Map<String, Object> user = new HashMap<>();
+                            String r=String.valueOf(eth.get("ethernetCables"));
+                           // if (r.equals("false")) {
+                                Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
+                                eth.put("ethernetCables", time);
+                                user.put("other", eth);
+                                db.collection("participants")
+                                        .document(rresult)
+                                        .update(user);
+                                return;
+                    //        }
+                    }else{
+                            Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG).show();
+
+                        }
+                    }
+                    else{
+                        Toast.makeText(getApplicationContext(),"Not registered to team",Toast.LENGTH_LONG).show();
+
                     }
 
-                 //   } else {
+                    //   } else {
                   //      Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG);
                  //   }
                 } else {

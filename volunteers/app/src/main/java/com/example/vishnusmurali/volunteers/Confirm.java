@@ -69,32 +69,41 @@ int n=1;
                     return;
                 }
                 Map<String, Object> meals1 = new HashMap<String, Object>();
+                Map<String, Object> details = new HashMap<String, Object>();
                 if (snapshot != null && snapshot.exists()) {
                     Log.d("", "Current data: " + snapshot.getData());
 
 
                     meals1 = (Map<String, Object>) snapshot.get("meals");
+                    details = (Map<String, Object>) snapshot.get("details");
                     String time = String.valueOf(System.currentTimeMillis());
+                    if (!String.valueOf(details.get("teamid")).equals("")) {
 
 
+                        Map<String, Object> user = new HashMap<>();
+                        String r = String.valueOf(meals1.get(req));
+                        if (r.equals("false")) {
+                            Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
+                            meals1.put(req, time);
+                            user.put("meals", meals1);
+                            db.collection("participants")
+                                    .document(rresult)
+                                    .update(user);
+                            return;
 
-                    Map<String, Object> user = new HashMap<>();
-                    String r=String.valueOf(meals1.get(req));
-                    if (r.equals("false")) {
-                        Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
-                        meals1.put(req, time);
-                        user.put("meals", meals1);
-                        db.collection("participants")
-                                .document(rresult)
-                                .update(user);
-                        return;
+                        } else {
+                            Toast.makeText(getApplicationContext(), "NOt Accepted", Toast.LENGTH_LONG).show();
 
+                        }
 
-                    }else {
-                        Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG);
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Not registered to a team yet.", Toast.LENGTH_LONG).show();
+//                        Log.d("", "Current data: null");
                     }
-                } else {
-                    Log.d("", "Current data: null");
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Invalid.", Toast.LENGTH_LONG).show();
+
                 }
             }
         });

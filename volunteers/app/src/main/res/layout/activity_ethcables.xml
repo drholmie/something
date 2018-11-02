@@ -20,21 +20,21 @@
         android:textAlignment="center"
         android:padding="5dp" />
 
-    <EditText
-        android:id="@+id/ed"
-        android:textColorHint="@android:color/holo_purple"
-        android:textColor="@android:color/holo_purple"
-        android:textColorHighlight="@android:color/holo_purple"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginTop="80dp"
-        android:layout_gravity="center"
-        android:backgroundTint="@android:color/holo_purple"
-        android:hint="ID of cable"
-        android:textAlignment="center"
-        android:inputType="number"
-        android:padding="20dp" />
+    <!--<EditText-->
+        <!--android:id="@+id/ed"-->
+        <!--android:textColorHint="@android:color/holo_purple"-->
+        <!--android:textColor="@android:color/holo_purple"-->
+        <!--android:textColorHighlight="@android:color/holo_purple"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_margin="20dp"-->
+        <!--android:layout_marginTop="80dp"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:backgroundTint="@android:color/holo_purple"-->
+        <!--android:hint="ID of cable"-->
+        <!--android:textAlignment="center"-->
+        <!--android:inputType="number"-->
+        <!--android:padding="20dp" />-->
 
     <Button
         android:id="@+id/submit"
