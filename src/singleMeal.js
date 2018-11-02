@@ -21,6 +21,12 @@ export default class singleMeals extends Component {
         // Return a view of what to render
         var mealName = this.props.mealName;
         var mealValue = this.props.mealValue;
+        var time = "null";
+        if (mealValue) {
+            var d = new Date(parseInt(mealValue));
+            time = d.toLocaleTimeString('en-IN');
+            time = time.split(":")[0] + ':' + time.split(":")[1];
+        }
         var icon = mealValue ? require('./../assets/check.png') : require('./../assets/cross.png');
 
         return (
@@ -29,6 +35,9 @@ export default class singleMeals extends Component {
                     <Image style={{ backgroundColor: 'transparent' }} source={icon} />
                 </View>
                 <Text style={[styles.textstyles, { alignSelf: 'flex-start', color: 'white' }]}> {mealName}</Text>
+                {mealValue &&
+                    <Text style={{ marginLeft: 'auto', alignSelf: 'flex-end', color: 'white' }}>{time}</Text>
+                }
             </View>
         );
     }

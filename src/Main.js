@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Alert, Button, Text, View, Image, TouchableOpacity } from 'react-native'
+import { StyleSheet, Platform, Button, Text, View, Image, TouchableOpacity } from 'react-native'
 import firebase from 'react-native-firebase'
 import Loading from './Loading';
 import DataDisplay from './dataDisplay'
@@ -53,8 +53,8 @@ export default class Main extends React.Component {
                   dinner: false
                 },
                 other: {
-                  cablesGivenBack: 0,
-                  ethernetCables: 0
+                  cablesGivenBack: false,
+                  ethernetCables: false,
                 }
               })
                 .then(function () {
@@ -83,7 +83,7 @@ export default class Main extends React.Component {
     else if (!this.state.teamid) {
       return (
         <View style={[styles.container, { justifyContent: 'center' }]}>
-          <Text style={{ fontSize: 30, textAlign: "center" }}>Sorry, you are not registered to a team yet.</Text>
+          <Text style={{ fontSize: 30, textAlign: "center", paddingHorizontal: 12, fontFamily: 'sans-serif-thin' }}>Sorry, you are not registered to a team yet.</Text>
         </View>
       )
     }
@@ -104,17 +104,6 @@ export default class Main extends React.Component {
               borderColor: 'black',
               margin: 10,
             }} />
-            {/* <View style={styles.buttonstyles}>
-              <Button
-                color="#cd5c5c"
-                onPress={
-                  () => {
-                    this.props.navigation.navigate('ShowQR');
-                  }
-                }
-                title="Show QR Code"
-              />
-            </View> */}
             {/* <View>
               <Button
                 color="#cd5c5c"
@@ -134,6 +123,19 @@ export default class Main extends React.Component {
           <View style={styles.Smallcontainer}>
             <DataDisplay meals={meals} other={other} />
           </View>
+          {Platform.OS === 'ios' &&
+            <View style={[styles.buttonstyles, { alignItems: 'center' }]}>
+              <Button
+                color="#cd5c5c"
+                onPress={
+                  () => {
+                    this.props.navigation.navigate('ShowQR');
+                  }
+                }
+                title="Show QR Code"
+              />
+            </View>
+          }
         </View >
       )
     }
