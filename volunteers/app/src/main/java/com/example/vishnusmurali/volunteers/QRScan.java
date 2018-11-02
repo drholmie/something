@@ -41,11 +41,25 @@ public class QRScan extends AppCompatActivity implements BarcodeReader.BarcodeRe
             int1.putExtra("req", req);
             startActivity(int1);
         }
-        else if(n==1){
-            Intent int1 = new Intent(this, Ethcables.class);
-            int1.putExtra("rresult", rresult);
-            int1.putExtra("req", req);
-            startActivity(int1);
+        else if(n==1) {
+            if (req.equals("taken")) {
+                Intent int1 = new Intent(this, Ethcables.class);
+                int1.putExtra("rresult", rresult);
+                int1.putExtra("req", req);
+                startActivity(int1);
+            } else if (req.equals("given")) {
+                Intent int1 = new Intent(this, Given.class);
+                int1.putExtra("rresult", rresult);
+                int1.putExtra("req", req);
+                startActivity(int1);
+            }
+        }
+        else if(n==2)
+        {
+            Intent tnt = new Intent(this, ConfirmRegister.class);
+            tnt.putExtra("rresult", rresult);
+            tnt.putExtra("req", req);
+            startActivity(tnt);
         }
     }
 

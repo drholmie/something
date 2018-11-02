@@ -47,75 +47,53 @@ public class Ethcables extends AppCompatActivity {
     }
 
     public void submit(View view) {
-        load();
-        this.finish();
+        load(rresult);
+       this.finish();
 
 }
-public void load(){
-    final DocumentReference docRef = db.collection("participants").document(rresult);
-    docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
-        @Override
-        public void onEvent(@Nullable DocumentSnapshot snapshot,
-                            @Nullable FirebaseFirestoreException e) {
-            if (e != null) {
-                Log.w("Listened", "Listen failed.", e);
-                return;
-            }
-            Map<String, Object> other = new HashMap<String, Object>();
-            if (snapshot != null && snapshot.exists()) {
-                Log.d("", "Current data: " + snapshot.getData());
+public void load(final String rresult) {
 
 
-                other = (Map<String, Object>) snapshot.get("other");
-//                ArrayList<> eth= (ArrayList<String>)(other.get("ethernetCables"));
-             //    ArrayList<String>ether=new ArrayList();
-                int eth = Integer.parseInt( String.valueOf(other.get("ethernetCables")));
-
-                if(eth!=0) {
-                    textView.setText(String.valueOf(eth));
-
-
-//                    for (int i = 0; i < eth.size(); ++i) {
-//                        ether.add(String.valueOf(eth.get(i)));
-//                    }
+        final DocumentReference docRef = db.collection("participants").document(rresult);
+        docRef.addSnapshotListener(new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot snapshot,
+                                @Nullable FirebaseFirestoreException e) {
+                if (e != null) {
+                    Log.w("Listened", "Listen failed.", e);
+                    return;
                 }
-                    String l=String.valueOf(editText.getText());
+                Map<String, Object> eth = new HashMap<String, Object>();
+                if (snapshot != null && snapshot.exists()) {
+                    Log.d("", "Current data: " + snapshot.getData());
+                    snapshot.getId();
 
-
-                Map<String, Object> user = new HashMap<>();
-                if(req.equals("taken")) {
-                    if(!l.equals("")) {
-//                        ether.add(l);
-
-                      eth=Integer.parseInt(l);
-                        other.put("ethernetCables", eth);
-                        user.put("other", other);
-                        Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_LONG);
+                    eth = (HashMap<String, Object>) snapshot.get("other");
+                   // String time = String.valueOf(System.currentTimeMillis());
+                    if(String.valueOf(eth.get("ethernetCables")).equals("")) {
+                        textView.setText(String.valueOf(eth.get("ethernetCables")));
+                        String l = editText.getText().toString();
+                        Map<String, Object> user = new HashMap<>();
+                        //String r=String.valueOf(eth.get(req));
+                        //  if (r.equals("false")) {
+                        Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
+                        eth.put("ethernetCables", l);
+                        user.put("other", eth);
+                        db.collection("participants")
+                                .document(rresult)
+                                .update(user);
+                        return;
                     }
+
+                 //   } else {
+                  //      Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG);
+                 //   }
+                } else {
+                    Log.d("", "Current data: null");
                 }
-                else if (req.equals("given")){
-                    if(!l.equals("")) {
-//                        eth.remove(l);
-
-                        other.put("ethernetCables", 0);
-                        user.put("other", other);
-                        Toast.makeText(getApplicationContext(), "Submitted", Toast.LENGTH_LONG);
-                    }
-                }
-
-
-                db.collection("participants")
-                        .document(rresult)
-                        .update(user);
-                return;
-
-
-            } else {
-                Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG);
             }
-        }
-    });
-}
+        });
 
+    }
 }
 
