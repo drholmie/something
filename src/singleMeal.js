@@ -3,7 +3,7 @@ import { Platform, StyleSheet, Text, View, Button, Image } from 'react-native';
 
 
 
-export default class singleMeals extends Component {
+export default class singleMeal extends Component {
     constructor(props) {
         super(props);
         // this.state = { someField: false };

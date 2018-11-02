@@ -4,13 +4,13 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import QRCode from 'react-native-qrcode';
 
-export default class QRgenerate extends Component{
-    
+export default class QRgenerate extends Component {
+
     render() {
         return (
             <View style={styles.container}>
                 <QRCode
-                    value= {this.props.message}
+                    value={this.props.message}
                     size={200}
                     bgColor='black'
                     fgColor='white' />
@@ -21,11 +21,13 @@ export default class QRgenerate extends Component{
 
 const styles = StyleSheet.create({
     container: {
-        height: 210,
-        width: 210,
+        height: 220,
+        width: 220,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: 'white',
+        borderColor: '#cd5c5c',
+        borderWidth: 3,
     },
     welcome: {
         fontSize: 20,

@@ -78,6 +78,8 @@ export default class Main extends React.Component {
   }
 
   render() {
+    const B = (props) => <Text style={{ fontWeight: 'bold' }}>{props.children}</Text>
+
     if (this.state.loading)
       return <Loading />;
     else if (!this.state.teamid) {
@@ -95,8 +97,11 @@ export default class Main extends React.Component {
         <View style={styles.container}>
           <View style={{ alignItems: 'center' }}>
             <View style={[styles.buttonstyle, { paddingHorizontal: 8, paddingVertical: 8 }]}>
-              <Text style={styles.textstyles}>
-                Hi {user.email}!
+              <Text style={[styles.textstyles, { textAlign: 'center' }]}>
+                Hi {user.email}! {'\n'}
+              </Text>
+              <Text style={[styles.textstyles, { textAlign: 'center' }]}>
+                <B>Team: </B> {this.state.teamid}
               </Text>
             </View>
             <View style={{

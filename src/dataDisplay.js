@@ -29,8 +29,8 @@ export default class dataDisplay extends Component {
                 <SingleMeal mealName="Snacks" mealValue={meals.snacks} />
                 <SingleMeal mealName="Dinner" mealValue={meals.dinner} />
                 <SingleMeal mealName="Mid-night snacks" mealValue={meals.mns} />
-                <SingleMeal mealName="Ethernet Cable" mealValue={other.ethernetCables} />
-                {/* <SingleItem itemName="Ethernet cables" qty={other.ethernetCables} /> */}
+                {/* <SingleMeal mealName="Ethernet Cable" mealValue={other.ethernetCables} /> */}
+                <SingleItem itemName="Ethernet cable" value={other.ethernetCables} taken={other.cablesGivenBack} />
             </ScrollView>
         );
     }
