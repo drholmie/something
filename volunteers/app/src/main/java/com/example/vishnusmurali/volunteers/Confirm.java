@@ -26,6 +26,7 @@ FirebaseFirestore db;
 String rresult;
 String req;
 int n=1;
+int k=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,6 +84,7 @@ int n=1;
                         Map<String, Object> user = new HashMap<>();
                         String r = String.valueOf(meals1.get(req));
                         if (r.equals("false")) {
+                            k=1;
                             Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
                             meals1.put(req, time);
                             user.put("meals", meals1);
@@ -92,7 +94,9 @@ int n=1;
                             return;
 
                         } else {
-                            Toast.makeText(getApplicationContext(), "NOt Accepted", Toast.LENGTH_LONG).show();
+                            if(k!=1) {
+                                Toast.makeText(getApplicationContext(), "NOt Accepted", Toast.LENGTH_LONG).show();
+                            }
 
                         }
 

@@ -79,6 +79,7 @@ public void load(final String rresult) {
                             Map<String, Object> user = new HashMap<>();
                             String r=String.valueOf(eth.get("ethernetCables"));
                            // if (r.equals("false")) {
+                            k=1;
                                 Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
                                 eth.put("ethernetCables", time);
                                 user.put("other", eth);
@@ -88,8 +89,9 @@ public void load(final String rresult) {
                                 return;
                     //        }
                     }else{
-                            Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG).show();
-
+                            if(k!=1) {
+                                Toast.makeText(getApplicationContext(), "NOt Accepted", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                     else{

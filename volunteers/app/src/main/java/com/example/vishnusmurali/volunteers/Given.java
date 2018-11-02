@@ -77,6 +77,7 @@ public class Given extends AppCompatActivity {
                             Map<String, Object> user = new HashMap<>();
                             //String r=String.valueOf(eth.get(req));
                             //  if (r.equals("false")) {
+                            k=1;
                             Toast.makeText(getApplicationContext(), "Accepted", Toast.LENGTH_LONG).show();
                             eth.put("cablesGivenBack", time);
                             user.put("other", eth);
@@ -86,8 +87,9 @@ public class Given extends AppCompatActivity {
                             return;
                         }
                         else{
-                            Toast.makeText(getApplicationContext(),"NOt Accepted",Toast.LENGTH_LONG).show();
-
+                            if(k!=1) {
+                                Toast.makeText(getApplicationContext(), "NOt Accepted", Toast.LENGTH_LONG).show();
+                            }
                         }
                     }
                     else{
