@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, Button } from 'react-native';
+import { Platform, StyleSheet, Text, View, Button, Image } from 'react-native';
 
 
 
@@ -21,9 +21,14 @@ export default class singleMeals extends Component {
         // Return a view of what to render
         var mealName = this.props.mealName;
         var mealValue = this.props.mealValue;
+        var icon = mealValue ? require('./../assets/check.png') : require('./../assets/cross.png');
+
         return (
-            <View>
-                <Text style={styles.textstyles}> {mealName}: {mealValue ? "Yes" : "No"}</Text>
+            <View style={[{ flexDirection: 'row' }, styles.container, { backgroundColor: mealValue ? '#14A085' : '#cf6363' }]}>
+                <View style={{ justifyContent: 'center', marginHorizontal: 8 }}>
+                    <Image style={{ backgroundColor: 'transparent' }} source={icon} />
+                </View>
+                <Text style={[styles.textstyles, { alignSelf: 'flex-start', color: 'white' }]}> {mealName}</Text>
             </View>
         );
     }
@@ -31,14 +36,18 @@ export default class singleMeals extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        borderRadius: 25,
+        borderWidth: 0.5,
+        borderColor: '#cd5c5c',
+        marginVertical: 4,
+        marginHorizontal: 8,
+        paddingHorizontal: 20,
+        paddingVertical: 8,
     },
     textstyles: {
         color: 'black',
         fontSize: 30,
-        fontFamily: 'sans-serif-thin',
+        fontFamily: 'sans-serif',
     }
 });
 

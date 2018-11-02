@@ -23,11 +23,13 @@ export default class dataDisplay extends Component {
         var other = (this.props.other) ? this.props.other : new Object();
         return (
             <ScrollView contentContainerStyle={styles.container}>
+                {/* <Text> {JSON.stringify(other)}</Text> */}
                 <SingleMeal mealName="Breakfast" mealValue={meals.breakfast} />
                 <SingleMeal mealName="Lunch" mealValue={meals.lunchDay1} />
                 <SingleMeal mealName="Snacks" mealValue={meals.snacks} />
+                <SingleMeal mealName="Dinner" mealValue={meals.dinner} />
                 <SingleMeal mealName="Mid-night snacks" mealValue={meals.mns} />
-                <SingleItem itemName="Ethernet Cables" qty={other.ethernetCables} />
+                <SingleItem itemName="Ethernet cables" qty={other.ethernetCables} />
             </ScrollView>
         );
     }
@@ -35,9 +37,9 @@ export default class dataDisplay extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        // backgroundColor: "blue",
-        flex: 1,
-        alignItems: 'center'
+        // backgroundColor: "black",
+        // flex: 1,
+        // alignItems: 'center'
     },
     textstyles: {
         color: 'black',

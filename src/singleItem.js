@@ -20,10 +20,10 @@ export default class singleMeals extends Component {
     render() {
         // Return a view of what to render
         var itemName = this.props.itemName;
-        var qty = this.props.qty;
+        var qty = (this.props.qty) ? this.props.qty : 0;
         return (
-            <View>
-                <Text style={styles.textstyles}> {itemName}: {qty ? qty : 0}</Text>
+            <View style={[styles.container, { backgroundColor: qty ? '#14A085' : '#cf6363' }]}>
+                <Text style={[styles.textstyles, { color: 'white' }]}> {itemName}: {qty}</Text>
             </View>
         );
     }
@@ -31,14 +31,19 @@ export default class singleMeals extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
+        borderRadius: 25,
+        backgroundColor: '#cf6363',
+        borderWidth: 0.5,
+        borderColor: '#cd5c5c',
+        marginVertical: 4,
+        marginHorizontal: 8,
+        paddingHorizontal: 20,
+        paddingVertical: 8,
     },
     textstyles: {
         color: 'black',
         fontSize: 30,
-        fontFamily: 'sans-serif-thin',
+        fontFamily: 'sans-serif',
     }
 });
 
