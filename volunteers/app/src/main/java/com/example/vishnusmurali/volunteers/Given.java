@@ -91,7 +91,7 @@ public class Given extends AppCompatActivity {
                         }
                     }
                     else{
-                             Toast.makeText(getApplicationContext(),"Not registered to Team",Toast.LENGTH_LONG);
+                             Toast.makeText(getApplicationContext(),"Not registered to Team",Toast.LENGTH_LONG).show();
 
                     }
 
