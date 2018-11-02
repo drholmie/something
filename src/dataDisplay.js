@@ -24,6 +24,7 @@ export default class dataDisplay extends Component {
         return (
             <ScrollView contentContainerStyle={styles.container}>
                 {/* <Text> {JSON.stringify(other)}</Text> */}
+                <SingleMeal mealName="Registration" mealValue={true} noTime={true}/>
                 <SingleMeal mealName="Breakfast" mealValue={meals.breakfast} />
                 <SingleMeal mealName="Lunch" mealValue={meals.lunchDay1} />
                 <SingleMeal mealName="Snacks" mealValue={meals.snacks} />

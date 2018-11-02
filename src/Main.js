@@ -8,7 +8,7 @@ import DataDisplay from './dataDisplay'
 export default class Main extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { user: false, loading: true, meals: null, other: null, teamid: null };
+    this.state = { user: false, loading: true, meals: null, other: null, details: null };
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -42,7 +42,9 @@ export default class Main extends React.Component {
               db.collection("participants").doc(user.uid).set({
                 details: {
                   name: user.email,
-                  teamid: ""
+                  teamid: "",
+                  teamNumber: "",
+                  tableNumber: "",
                 },
                 meals: {
                   breakfast: false,
@@ -65,7 +67,7 @@ export default class Main extends React.Component {
                 });
             }
             else {
-              self.setState({ meals: doc.data().meals, other: doc.data().other, teamid: doc.data().details.teamid, loading: false });
+              self.setState({ meals: doc.data().meals, other: doc.data().other, details: doc.data().details, loading: false });
             }
           }, function (error) {
             console.log(error);
@@ -82,7 +84,7 @@ export default class Main extends React.Component {
 
     if (this.state.loading)
       return <Loading />;
-    else if (!this.state.teamid) {
+    else if (!this.state.details.teamid) {
       return (
         <View style={[styles.container, { justifyContent: 'center' }]}>
           <Text style={{ fontSize: 30, textAlign: "center", paddingHorizontal: 12, fontFamily: 'sans-serif-thin' }}>Sorry, you are not registered to a team yet.</Text>
@@ -93,23 +95,22 @@ export default class Main extends React.Component {
       var user = this.state.user;
       var meals = this.state.meals;
       var other = this.state.other;
+      var details = this.state.details;
       return (
         <View style={styles.container}>
-          <View style={{ alignItems: 'center' }}>
-            <View style={[styles.buttonstyle, { paddingHorizontal: 8, paddingVertical: 8 }]}>
-              <Text style={[styles.textstyles, { textAlign: 'center' }]}>
-                Hi {user.email}! {'\n'}
-              </Text>
-              <Text style={[styles.textstyles, { textAlign: 'center' }]}>
-                <B>Team: </B> {this.state.teamid}
-              </Text>
-            </View>
-            <View style={{
-              borderWidth: 0.5,
-              borderColor: 'black',
-              margin: 10,
-            }} />
-            {/* <View>
+          {/* <View style={{ alignItems: 'center' }}> */}
+          <View style={[styles.buttonstyle, { paddingHorizontal: 8, paddingVertical: 2 }]}>
+            <Text style={[styles.textstyles, { textAlign: 'center' }]}>
+              Hi {user.email}! {'\n'}
+            </Text>
+            <Text style={[styles.textstyles, { textAlign: 'center' }]}>
+              <B>Team {details.teamNumber}: </B> {details.teamid}
+            </Text>
+          </View>
+          {/* <View style={{
+              margin: 4,
+            }} /> */}
+          {/* <View>
               <Button
                 color="#cd5c5c"
                 onPress={
@@ -124,7 +125,7 @@ export default class Main extends React.Component {
                 }
                 title="Sign Out"
               /> */}
-          </View >
+          {/* </View > */}
           <View style={styles.Smallcontainer}>
             <DataDisplay meals={meals} other={other} />
           </View>
@@ -141,7 +142,7 @@ export default class Main extends React.Component {
               />
             </View>
           }
-          <View style={[styles.buttonstyles, { alignItems: 'center' }]}>
+          <View style={[styles.buttonstyles, { justifyContent: 'center', alignItems: 'center' }]}>
             <Button
               color="#cd5c5c"
               onPress={
@@ -170,11 +171,12 @@ const styles = StyleSheet.create({
   },
   textstyles: {
     color: 'black',
-    fontSize: 25,
+    fontSize: 24,
     fontFamily: 'sans-serif-thin',
   },
   buttonstyles: {
-    marginVertical: 8
+    marginVertical: 4,
+    paddingVertical: 2,
   },
   view: {
     position: 'absolute',

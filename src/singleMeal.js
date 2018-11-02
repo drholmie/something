@@ -21,8 +21,8 @@ export default class singleMeal extends Component {
         // Return a view of what to render
         var mealName = this.props.mealName;
         var mealValue = this.props.mealValue;
-        var time = "null";
-        if (mealValue) {
+        var time = "";
+        if (!this.props.noTime && mealValue) {
             var d = new Date(parseInt(mealValue));
             time = d.toLocaleTimeString('en-IN');
             time = time.split(":")[0] + ':' + time.split(":")[1];

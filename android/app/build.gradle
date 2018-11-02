@@ -101,9 +101,9 @@ android {
         applicationId "com.hashcode"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
+        versionCode 4
         multiDexEnabled true
-        versionName "1.0.1"
+        versionName "1.0.3"
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
