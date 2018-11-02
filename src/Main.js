@@ -141,6 +141,17 @@ export default class Main extends React.Component {
               />
             </View>
           }
+          <View style={[styles.buttonstyles, { alignItems: 'center' }]}>
+            <Button
+              color="#cd5c5c"
+              onPress={
+                () => {
+                  this.props.navigation.navigate('ScheduleView');
+                }
+              }
+              title="Schedule"
+            />
+          </View>
         </View >
       )
     }

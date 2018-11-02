@@ -5,7 +5,7 @@ import QRgenerate from './qrGenerate';
 import Loading from './Loading';
 
 
-export default class bleh extends Component {
+export default class showQR extends Component {
     constructor(props) {
         super(props);
         this.state = { user: null, loading: true };

@@ -8,6 +8,7 @@ import SignUp from './SignUp'
 import Login from './Login'
 import Main from './Main'
 import ShowQR from './showQR'
+import ScheduleView from './ScheduleView'
 
 const AppStack = createStackNavigator({
   Main: {
@@ -20,6 +21,12 @@ const AppStack = createStackNavigator({
     screen: ShowQR,
     navigationOptions: {
       title: "QR Code"
+    }
+  },
+  ScheduleView: {
+    screen: ScheduleView,
+    navigationOptions: {
+      title: "Schedule"
     }
   }
 });
